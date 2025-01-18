@@ -1,17 +1,16 @@
 <!-- home.component.html -->
 <div class="container-fluid p-0">
     <!-- Hero Section -->
-    <div class="bg-image text-white" style="background-image: url('assets/images/chickens-hero.jpg');
+    <div class="bg-image text-white text-center" style="background-image: url('assets/images/chickens-hero.jpg');
                 background-size: cover;
                 background-position: center;
                 min-height: 60vh;">
-        <div class="d-flex flex-column justify-content-center align-items-center"
+        <div class="d-flex flex-column justify-content-center align-items-center text-center"
             style="background-color: rgba(0,0,0,0.5); min-height: 60vh;">
             <h1 class="display-4 fw-bold mt-5">Naatu Kodi by GSR</h1>
-            <p class="lead mb-4 px-3 text-center">
-                Supplying 45-day-old organic chickens to farmers, providing sustainable feed &amp; medical support, and
-                buying them back at 2.5–3 kg.
-            </p>
+            <p class="lead mb-5">Empowering farmers, transforming waste, and providing organic, healthy food for a
+                better
+                tomorrow.</p>
             <a routerLink="/services" routerLinkActive="services" class="btn btn-primary btn-lg mb-5">
                 Learn More
             </a>
@@ -19,13 +18,49 @@
     </div>
 </div>
 
-<!-- Optional Spacing -->
-<div class="my-5 container">
-    <h2 class="text-center mb-3">What We Do</h2>
-    <p class="text-center">
-        We also raise Black Soldier Fly (BSF) larvae from community food waste to provide a
-        sustainable feed for our chickens – helping farmers save costs while reducing waste.
-    </p>
+<!-- Mission & Vision Section -->
+
+<!-- Container for Tagline -->
+<div class="container my-5">
+    <div class="row justify-content-center text-center">
+        <div class="col-12 col-lg-8">
+            <p class="lead">
+                Together, we are shaping a cleaner future by turning waste into valuable resources and fueling
+                sustainable growth for communities worldwide.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Cards for Mission and Vision -->
+<div class="container my-5">
+    <div class="row g-4 justify-content-center">
+        <!-- Mission Card -->
+        <div class="col-12 col-md-6 col-lg-5">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Mission</h3>
+                    <p class="card-text">
+                        To transform every bit of human-generated waste into valuable resources,
+                        fostering innovation, building stronger communities, and paving the way
+                        for a sustainable, waste-free society.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Vision Card -->
+        <div class="col-12 col-md-6 col-lg-5">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Vision</h3>
+                    <p class="card-text">
+                        To be a global pioneer in creating a circular economy, where waste is a thing of the past,
+                        and every individual and community thrives in a cleaner, healthier, and more sustainable world.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Carousel Section -->
