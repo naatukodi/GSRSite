@@ -28,3 +28,75 @@ section.py-5.bg-light {
         font-size: 0.9rem;
     }
 }
+
+/* styles.css */
+
+/* Carousel Image Styling */
+.carousel-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    /* Maintains a maximum height for larger screens */
+    object-fit: cover;
+    /* Ensures the image covers the area without distortion */
+    transition: transform 0.5s ease;
+    /* Smooth transition for hover effects */
+}
+
+/* Hover Effect for Images (Optional) */
+.carousel-image:hover {
+    transform: scale(1.05);
+}
+
+/* Adjust Carousel Height on Smaller Screens */
+@media (max-width: 750px) {
+    .carousel-image {
+        max-height: 250px;
+        /* Reduced height for smaller screens */
+    }
+
+    .carousel-caption h5 {
+        font-size: 1rem;
+        /* Smaller font size for headings */
+    }
+
+    .carousel-caption p {
+        font-size: 0.875rem;
+        /* Smaller font size for paragraphs */
+    }
+
+    /* Center Carousel Controls Vertically */
+    .carousel-control-prev,
+    .carousel-control-next {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+/* Adjust Carousel Height on Extra Small Devices */
+@media (max-width: 576px) {
+    .carousel-image {
+        max-height: 200px;
+        /* Further reduced height for very small screens */
+    }
+
+    .carousel-caption h5 {
+        font-size: 0.9rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Optional: Add a subtle shadow to carousel images */
+.carousel-image {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Adjust the position of carousel indicators on small screens */
+@media (max-width: 750px) {
+    .carousel-indicators {
+        bottom: 10px;
+    }
+}
