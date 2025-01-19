@@ -6,12 +6,5 @@
       "/*.css",
       "/*.js"
     ]
-  },
-  "routes": [
-    {
-      "route": "www.naatukodi.co.in",
-      "redirect": "naatukodi.co.in",
-      "statusCode": 301
-    }
-  ]
+  }
 }
