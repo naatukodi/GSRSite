@@ -41,6 +41,66 @@
 <router-outlet></router-outlet>
 
 <!-- A global footer could go here, or you can keep it in each component -->
-<footer class="text-center p-3 bg-light mt-5">
-  <p>&copy; 2025 Naatu Kodi by GSR</p>
+<footer class="bg-dark text-light py-4">
+  <div class="container">
+    <div class="row">
+      <!-- Company Information -->
+      <div class="col-md-4">
+        <h5 class="fw-bold">Naatukodi by GSR</h5>
+        <p class="small">
+          Bringing fresh, organic Naatukodi directly from farmers to businesses and consumers.
+        </p>
+        <p class="mb-1"><i class="bi bi-telephone-fill"></i> <a href="tel:+919177377178" class="text-light">+91 9177 377
+            178 </a></p>
+        <p class="mb-1"><i class="bi bi-envelope-fill"></i> <a href="mailto:gsrnaatukodi@gmail.com"
+            class="text-light">gsrnaatukodi&#64;gmail.com</a></p>
+        <p class="mb-0"><i class="bi bi-geo-alt-fill"></i> Kakinada, India</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-4">
+        <h5 class="fw-bold">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a routerLink="/" routerLinkActive="home" class="text-light text-decoration-none">Home</a></li>
+          <li><a routerLink="/about" routerLinkActive="about" class="text-light text-decoration-none">About Us</a></li>
+          <li><a routerLink="/forfarmers" routerLinkActive="forfarmers" class="text-light text-decoration-none">For
+              Farmers</a></li>
+          <li><a routerLink="/forbusinesses" routerLinkActive="forbusinesses"
+              class="text-light text-decoration-none">For Businesses</a></li>
+          <li><a routerLink="/contact" routerLinkActive="contact" class="text-light text-decoration-none">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Social Media & Subscription -->
+      <div class="col-md-4">
+        <h5 class="text-light">Stay Connected</h5>
+        <p>Follow us on social media or share our website:</p>
+        <div class="d-flex gap-2">
+          <a href="https://facebook.com" target="_blank" class="text-light"><i class="bi bi-facebook fs-4"></i></a>
+          <a href="https://twitter.com" target="_blank" class="text-light"><i class="bi bi-twitter fs-4"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="text-light"><i class="bi bi-linkedin fs-4"></i></a>
+          <a href="https://wa.me/919876543210" target="_blank" class="text-light"><i
+              class="bi bi-whatsapp fs-4"></i></a>
+          <a href="mailto:?subject=Check%20out%20Naatukodi%20by%20GSR&body=https://naatukodibygsr.com"
+            class="text-light">
+            <i class="bi bi-envelope fs-4"></i>
+          </a>
+        </div>
+
+        <h6 class="mt-3">Subscribe for Updates</h6>
+        <form>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Enter your email" required>
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-4">
+      <p class="small mb-0">&copy; 2025 Naatukodi by GSR. All Rights Reserved.</p>
+    </div>
+  </div>
 </footer>
