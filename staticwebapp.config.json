@@ -1,10 +1,17 @@
 {
-    "navigationFallback": {
-        "rewrite": "index.html",
-        "exclude": [
-            "/images/*",
-            "/*.css",
-            "/*.js"
-        ]
+  "navigationFallback": {
+    "rewrite": "index.html",
+    "exclude": [
+      "/images/*",
+      "/*.css",
+      "/*.js"
+    ]
+  },
+  "routes": [
+    {
+      "route": "www.naatukodi.co.in",
+      "redirect": "naatukodi.co.in",
+      "statusCode": 301
     }
+  ]
 }
