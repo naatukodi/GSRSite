@@ -1,0 +1,63 @@
+<h1>Business Registration Form</h1>
+<form class="questionnaire-form" (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+    <!-- Business Information -->
+    <h3>Business Information</h3>
+    <div class="form-group">
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" name="customerId" [(ngModel)]="formData.CustomerId" required />
+    </div>
+    <div class="form-group">
+        <label for="businessName">Business Name:</label>
+        <input type="text" id="businessName" name="businessName" [(ngModel)]="formData.businessName" required />
+    </div>
+    <div class="form-group">
+        <label for="ownerName">Owner/Contact Person:</label>
+        <input type="text" id="ownerName" name="ownerName" [(ngModel)]="formData.ownerName" required />
+    </div>
+    <div class="form-group">
+        <label for="phoneOrEmail">Phone Number/Email:</label>
+        <input type="text" id="phoneOrEmail" name="phoneOrEmail" [(ngModel)]="formData.phoneOrEmail" required />
+    </div>
+    <div class="form-group">
+        <label for="gstNumber">GST Number:</label>
+        <input type="text" id="gstNumber" name="gstNumber" [(ngModel)]="formData.gstNumber" required />
+    </div>
+
+    <!-- Business Type & Subtype -->
+    <h3>Business Type</h3>
+    <div class="form-group">
+        <label for="businessType">Select Business Type:</label>
+        <select id="businessType" name="businessType" [(ngModel)]="formData.businessType">
+            <option value="Retailer">Retailer</option>
+            <option value="Wholesaler">Wholesaler</option>
+            <option value="Distributor">Distributor</option>
+            <option value="Manufacturer">Manufacturer</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="businessSubtype">Optional Subtype:</label>
+        <input type="text" id="businessSubtype" name="businessSubtype" [(ngModel)]="formData.businessSubtype" />
+    </div>
+
+    <!-- Location Information -->
+    <h3>Business Address</h3>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" [(ngModel)]="formData.address"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" [(ngModel)]="formData.city" required />
+    </div>
+    <div class="form-group">
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" [(ngModel)]="formData.state" required />
+    </div>
+    <div class="form-group">
+        <label for="zipcode">Zip Code:</label>
+        <input type="text" id="zipcode" name="zipcode" [(ngModel)]="formData.zipcode" required />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-button">Register Business</button>
+</form>

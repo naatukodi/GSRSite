@@ -1,0 +1,39 @@
+<h1>Chicken Farming Registration</h1>
+<form class="questionnaire-form" (ngSubmit)="onSubmit()" #farmingForm="ngForm">
+    <!-- Farmer Information -->
+    <h3>Farmer Information</h3>
+    <div class="form-group">
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" name="customerId" [(ngModel)]="formData.customerId" required />
+    </div>
+    <div class="form-group">
+        <label for="farmerName">Farmer Name:</label>
+        <input type="text" id="farmerName" name="farmerName" [(ngModel)]="formData.farmerName" required />
+    </div>
+    <div class="form-group">
+        <label for="phoneOrEmail">Phone Number/Email:</label>
+        <input type="text" id="phoneOrEmail" name="phoneOrEmail" [(ngModel)]="formData.phoneOrEmail" required />
+    </div>
+
+    <!-- Chicken Farming Details -->
+    <h3>Chicken Farming Details</h3>
+    <div class="form-group">
+        <label for="farmingType">Farming Type:</label>
+        <select id="farmingType" name="farmingType" [(ngModel)]="formData.farmingType">
+            <option value="Free-range">Free-range</option>
+            <option value="Cage-based">Cage-based</option>
+            <option value="Organic">Organic</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="chickenCount">Number of Chickens:</label>
+        <input type="text" id="chickenCount" name="chickenCount" [(ngModel)]="formData.chickenCount" required />
+    </div>
+    <div class="form-group">
+        <label for="feedType">Type of Feed Used:</label>
+        <input type="text" id="feedType" name="feedType" [(ngModel)]="formData.feedType" required />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-button">Register Chicken Farming</button>
+</form>

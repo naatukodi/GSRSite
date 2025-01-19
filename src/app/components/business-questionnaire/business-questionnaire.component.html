@@ -1,0 +1,101 @@
+<h1>Business Questionnaire</h1>
+<form class="questionnaire-form" (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+    <!-- Business Information -->
+    <h3>Business Information</h3>
+    <div class="form-group">
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" name="customerId" [(ngModel)]="formData.CustomerId" required />
+    </div>
+    <div class="form-group">
+        <label for="businessName">Business Name:</label>
+        <input type="text" id="businessName" name="businessName" [(ngModel)]="formData.businessName" required />
+    </div>
+    <div class="form-group">
+        <label for="contactPerson">Contact Person:</label>
+        <input type="text" id="contactPerson" name="contactPerson" [(ngModel)]="formData.contactPerson" required />
+    </div>
+    <div class="form-group">
+        <label for="phoneOrEmail">Phone Number/Email:</label>
+        <input type="text" id="phoneOrEmail" name="phoneOrEmail" [(ngModel)]="formData.phoneOrEmail" required />
+    </div>
+    <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" [(ngModel)]="formData.location" />
+    </div>
+
+    <!-- Operational Details -->
+    <h3>Operational Details</h3>
+    <div class="form-group">
+        <label for="businessType">What type of business do you run?</label>
+        <select id="businessType" name="businessType" [(ngModel)]="formData.businessType">
+            <option value="Restaurant">Restaurant</option>
+            <option value="Grocery Store">Grocery Store</option>
+            <option value="Butcher Shop">Butcher Shop</option>
+            <option value="Wholesaler">Wholesaler</option>
+            <option value="Others">Others</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="purchaseFrequency">How frequently do you purchase chicken for your business?</label>
+        <select id="purchaseFrequency" name="purchaseFrequency" [(ngModel)]="formData.purchaseFrequency">
+            <option value="Daily">Daily</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Bi-weekly">Bi-weekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Others">Others</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>What types of chicken products do you typically purchase?</label>
+        <div>
+            <input type="checkbox" (change)="updateCheckbox($event, 'Whole chickens')" /> Whole chickens
+        </div>
+        <div>
+            <input type="checkbox" (change)="updateCheckbox($event, 'Chicken breasts')" /> Chicken breasts
+        </div>
+        <div>
+            <input type="checkbox" (change)="updateCheckbox($event, 'Chicken thighs')" /> Chicken thighs
+        </div>
+        <div>
+            <input type="checkbox" (change)="updateCheckbox($event, 'Chicken wings')" /> Chicken wings
+        </div>
+        <div>
+            <input type="checkbox" (change)="updateCheckbox($event, 'Ground chicken')" /> Ground chicken
+        </div>
+        <div>
+            <input type="checkbox" (change)="updateCheckbox($event, 'Other')" /> Other
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="averageOrderSize">What is your average order size (in kg or pieces)?</label>
+        <input type="text" id="averageOrderSize" name="averageOrderSize" [(ngModel)]="formData.averageOrderSize" />
+    </div>
+
+    <!-- Quality and Preferences -->
+    <h3>Quality and Preferences</h3>
+    <div class="form-group">
+        <label for="qualities">What qualities are most important to you when purchasing chicken?</label>
+        <textarea id="qualities" name="qualities" [(ngModel)]="formData.qualities"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Are you open to purchasing free-range or organic chicken?</label>
+        <input type="radio" name="freeRange" [(ngModel)]="formData.freeRange" [value]="true" /> Yes
+        <input type="radio" name="freeRange" [(ngModel)]="formData.freeRange" [value]="false" /> No
+    </div>
+    <div class="form-group">
+        <label>Are you open to purchasing frozen chicken?</label>
+        <input type="radio" name="frozenChicken" [(ngModel)]="formData.frozenChicken" [value]="true" /> Yes
+        <input type="radio" name="frozenChicken" [(ngModel)]="formData.frozenChicken" [value]="false" /> No
+    </div>
+
+    <!-- Delivery and Logistics -->
+    <h3>Delivery and Logistics</h3>
+    <div class="form-group">
+        <label>Do you prefer chicken delivered to your location?</label>
+        <input type="radio" name="deliveryPreference" [(ngModel)]="formData.deliveryPreference" [value]="true" /> Yes
+        <input type="radio" name="deliveryPreference" [(ngModel)]="formData.deliveryPreference" [value]="false" /> No
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="submit-button">Submit Questionnaire</button>
+</form>

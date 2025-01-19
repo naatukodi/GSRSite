@@ -22,6 +22,9 @@
             <p class="lead mb-0">
                 Empowering Farmers to Thrive with High-Quality Chickens, Training, &amp; Support
             </p>
+            <br>
+            <a routerLink="/farmersurvey" routerLinkActive="farmersurvey" class="btn btn-primary btn-lg mb-5">Farmer
+                Survey</a>
         </div>
     </div>
 </div>
@@ -29,18 +32,28 @@
 <!-- Empowering Farmers Section -->
 <section class="py-5 bg-light">
     <div class="container my-4">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <h2 class="fw-bold mb-3">Empowering Farmers</h2>
-                <p>
-                    We provide farmers with high-quality chickens and empower them with
-                    scientific methods, training, and veterinary support to ensure success.
-                </p>
-            </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 text-center">
+          <h2 class="fw-bold mb-3">Empowering Farmers</h2>
+          <p class="lead">
+            We provide farmers with high-quality chickens and empower them with
+            scientific methods, training, and veterinary support to ensure success.
+          </p>
+          <div class="d-flex justify-content-center gap-3 mt-4">
+            <a routerLink="/farmerregistration" routerLinkActive="farmerregistration"
+              class="btn btn-lg custom-btn shadow">
+              <i class="bi bi-person-plus-fill"></i> Farmer Registration
+            </a>
+            <a routerLink="/chickenfarming" routerLinkActive="chickenfarming"
+              class="btn btn-lg custom-btn shadow">
+              <i class="bi bi-egg-fill"></i> Chicken Farming
+            </a>
+          </div>
         </div>
+      </div>
     </div>
-</section>
-
+  </section>
+  
 <!-- Our Offerings -->
 <section class="py-5 bg-light">
     <div class="container mb-4">
@@ -266,3 +279,5 @@
         </div>
     </div>
 </div>
+
+<router-outlet></router-outlet>

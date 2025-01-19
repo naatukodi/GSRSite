@@ -28,3 +28,36 @@ section.py-5.bg-light {
         font-size: 0.9rem;
     }
 }
+
+/* Custom Styling */
+.custom-btn {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.custom-btn:hover {
+  background: linear-gradient(to right, #0056b3, #007bff);
+  transform: scale(1.05);
+}
+
+.custom-btn i {
+  margin-right: 8px;
+}
+
+@media (max-width: 576px) {
+  .d-flex.justify-content-center {
+    flex-direction: column;
+  }
+
+  .custom-btn {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}

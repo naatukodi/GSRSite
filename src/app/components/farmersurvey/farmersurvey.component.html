@@ -1,0 +1,257 @@
+<h1>Farmer Questionnaire</h1>
+
+<form (ngSubmit)="onSubmit()" #questionnaireForm="ngForm" class="questionnaire-form">
+    <!-- ID (often read-only or hidden) -->
+    <div class="form-group">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" [(ngModel)]="formData.id" />
+    </div>
+
+    <!-- Type (usually read-only) -->
+    <div class="form-group">
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" [(ngModel)]="formData.Type" readonly />
+    </div>
+
+    <!-- Customer Information -->
+    <h3>Customer Information</h3>
+    <div class="form-group">
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" name="customerId" [(ngModel)]="formData.CustomerId" required />
+    </div>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="formData.Name" required />
+    </div>
+    <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" [(ngModel)]="formData.Location" required />
+    </div>
+    <div class="form-group">
+        <label for="contactInfo">Contact Info:</label>
+        <input type="text" id="contactInfo" name="contactInfo" [(ngModel)]="formData.ContactInfo" required />
+    </div>
+
+    <!-- Chicken/Farming Details -->
+    <h3>Farming Details</h3>
+    <div class="form-group">
+        <label for="chickenBreeds">Chicken Breeds:</label>
+        <input type="text" id="chickenBreeds" name="chickenBreeds" [(ngModel)]="formData.ChickenBreeds" />
+    </div>
+
+    <div class="form-group">
+        <label for="rearingMethod">Rearing Method:</label>
+        <select id="rearingMethod" name="rearingMethod" [(ngModel)]="formData.RearingMethod">
+            <option *ngFor="let option of rearingMethodOptions" [value]="option">
+                {{ option }}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="chickenCount">Chicken Count:</label>
+        <select id="chickenCount" name="chickenCount" [(ngModel)]="formData.ChickenCount">
+            <option *ngFor="let option of chickenCountOptions" [value]="option">
+                {{ option }}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="monthlySales">Monthly Sales:</label>
+        <select id="monthlySales" name="monthlySales" [(ngModel)]="formData.MonthlySales">
+            <option *ngFor="let option of monthlySalesOptions" [value]="option">
+                {{ option }}
+            </option>
+        </select>
+    </div>
+
+    <!-- Feed Materials (Multiple Checkboxes -> comma-separated) -->
+    <h3>Feed Materials</h3>
+    <div class="form-group">
+        <div *ngFor="let option of feedMaterialOptions">
+            <label>
+                <input type="checkbox" [value]="option" (change)="toggleSelection('FeedMaterials', option)"
+                    [checked]="isSelected('FeedMaterials', option)" />
+                {{ option }}
+            </label>
+        </div>
+    </div>
+
+    <!-- Health Practices (Multiple Checkboxes -> comma-separated) -->
+    <h3>Health Practices</h3>
+    <div class="form-group">
+        <div *ngFor="let option of healthPracticesOptions">
+            <label>
+                <input type="checkbox" [value]="option" (change)="toggleSelection('HealthPractices', option)"
+                    [checked]="isSelected('HealthPractices', option)" />
+                {{ option }}
+            </label>
+        </div>
+    </div>
+
+    <!-- Has Vet Access -->
+    <div class="form-group">
+        <label>Has Vet Access?</label>
+        <input type="checkbox" id="hasVetAccess" name="hasVetAccess" [(ngModel)]="formData.HasVetAccess" />
+    </div>
+
+    <!-- Selling Methods (Multiple Checkboxes -> comma-separated) -->
+    <h3>Selling Methods</h3>
+    <div class="form-group">
+        <div *ngFor="let option of sellingMethodOptions">
+            <label>
+                <input type="checkbox" [value]="option" (change)="toggleSelection('SellingMethods', option)"
+                    [checked]="isSelected('SellingMethods', option)" />
+                {{ option }}
+            </label>
+        </div>
+    </div>
+
+    <!-- Supply Directly To Market? -->
+    <div class="form-group">
+        <label>Supply Directly To Market?</label>
+        <input type="checkbox" id="supplyDirectlyToMarket" name="supplyDirectlyToMarket"
+            [(ngModel)]="formData.SupplyDirectlyToMarket" />
+    </div>
+
+    <div class="form-group">
+        <label for="marketRequirements">Market Requirements:</label>
+        <input type="text" id="marketRequirements" name="marketRequirements"
+            [(ngModel)]="formData.MarketRequirements" />
+    </div>
+
+    <!-- Buy-back -->
+    <h3>Buy-back Program</h3>
+    <div class="form-group">
+        <label>Interested In Buy Back?</label>
+        <input type="checkbox" id="interestedInBuyBack" name="interestedInBuyBack"
+            [(ngModel)]="formData.InterestedInBuyBack" />
+    </div>
+    <div class="form-group">
+        <label for="buyBackChickenCount">Buy Back Chicken Count:</label>
+        <input type="text" id="buyBackChickenCount" name="buyBackChickenCount"
+            [(ngModel)]="formData.BuyBackChickenCount" />
+    </div>
+
+    <!-- Vet Support -->
+    <h3>Vet Support</h3>
+    <div class="form-group">
+        <label>Interested In Vet Support?</label>
+        <input type="checkbox" id="interestedInVetSupport" name="interestedInVetSupport"
+            [(ngModel)]="formData.InterestedInVetSupport" />
+    </div>
+
+    <div class="form-group">
+        <label>Vet Support Type:</label>
+        <div *ngFor="let option of vetSupportTypeOptions">
+            <label>
+                <input type="checkbox" [value]="option" (change)="toggleSelection('VetSupportType', option)"
+                    [checked]="isSelected('VetSupportType', option)" />
+                {{ option }}
+            </label>
+        </div>
+    </div>
+
+    <!-- Assistance Required -->
+    <h3>Assistance Required</h3>
+    <div class="form-group">
+        <div *ngFor="let option of assistanceRequiredOptions">
+            <label>
+                <input type="checkbox" [value]="option" (change)="toggleSelection('AssistanceRequired', option)"
+                    [checked]="isSelected('AssistanceRequired', option)" />
+                {{ option }}
+            </label>
+        </div>
+    </div>
+
+    <!-- Challenges -->
+    <div class="form-group">
+        <label>Are you facing challenges?</label>
+        <input type="checkbox" id="facingChallenges" name="facingChallenges" [(ngModel)]="formData.FacingChallenges" />
+    </div>
+    <div class="form-group">
+        <label for="challengeDetails">Challenge Details:</label>
+        <textarea id="challengeDetails" name="challengeDetails" [(ngModel)]="formData.ChallengeDetails"></textarea>
+    </div>
+
+    <!-- Additional Details -->
+    <h3>Additional Details</h3>
+    <div class="form-group">
+        <label>Exploring New Methods?</label>
+        <input type="checkbox" id="exploringNewMethods" name="exploringNewMethods"
+            [(ngModel)]="formData.ExploringNewMethods" />
+    </div>
+    <div class="form-group">
+        <label>Getting Fair Price?</label>
+        <input type="checkbox" id="gettingFairPrice" name="gettingFairPrice" [(ngModel)]="formData.GettingFairPrice" />
+    </div>
+    <div class="form-group">
+        <label for="priceIssues">Price Issues:</label>
+        <textarea id="priceIssues" name="priceIssues" [(ngModel)]="formData.PriceIssues"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="suggestions">Suggestions:</label>
+        <textarea id="suggestions" name="suggestions" [(ngModel)]="formData.Suggestions"></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-button">Submit</button>
+</form>
+
+<!-- Optional styling for clarity -->
+<style>
+    .questionnaire-form {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .form-group label,
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        display: block;
+        margin-top: 6px;
+    }
+
+    .form-group input[type='text'],
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .form-group input[type='checkbox'] {
+        width: auto;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .submit-button:hover {
+        background-color: #45a049;
+    }
+</style>
