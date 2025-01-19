@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-business-registration',
@@ -12,19 +13,22 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    RouterLink,
+    RouterOutlet
   ],
   styleUrls: ['./business-registration.component.css'],
 })
 export class BusinessRegistrationComponent {
   formData: any = {};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   onSubmit() {
     console.log('Form Data:', this.formData);
     this.http.post('https://naatukodiappservice.azurewebsites.net/api/BusinessRegistration', this.formData).subscribe({
       next: (response) => {
         alert('Business Registered Successfully!');
+        this.router.navigate(['/forbusinesses']);
         console.log('Response:', response);
       },
       error: (error) => {

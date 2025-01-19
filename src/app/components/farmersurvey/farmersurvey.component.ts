@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-farmersurvey',
@@ -10,6 +11,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    RouterLink,
+    RouterOutlet
   ],
   templateUrl: './farmersurvey.component.html',
   styleUrl: './farmersurvey.component.scss'
@@ -109,7 +112,7 @@ export class FarmersurveyComponent {
       Suggestions: '',
     };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   /**
    * Toggle item in a comma-separated string field
@@ -185,6 +188,7 @@ export class FarmersurveyComponent {
       .subscribe({
         next: (response) => {
           alert('Questionnaire submitted successfully!');
+          this.router.navigate(['/forfarmers']);
           console.log('Server response:', response);
         },
         error: (error) => {

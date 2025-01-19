@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-chicken-farming',
@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    RouterLink,
+    RouterOutlet
   ],
   styleUrls: ['./chicken-farming.component.css'],
 })

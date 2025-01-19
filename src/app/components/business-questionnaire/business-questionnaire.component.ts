@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-business-questionnaire',
@@ -12,7 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    
+    RouterLink,
+    RouterOutlet
+
   ],
   styleUrls: ['./business-questionnaire.component.css'],
 })
@@ -21,7 +24,7 @@ export class BusinessQuestionnaireComponent {
     chickenProducts: [], // Initialize as an empty array
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   updateCheckbox(event: Event, value: string) {
     const checkbox = event.target as HTMLInputElement;
@@ -41,6 +44,7 @@ export class BusinessQuestionnaireComponent {
     this.http.post('https://naatukodiappservice.azurewebsites.net/api/BusinessQuestionnaire', this.formData).subscribe({
       next: (response) => {
         alert('Business Questionnaire submitted successfully!');
+        this.router.navigate(['/forbusinesses']);
         console.log('Response:', response);
       },
       error: (error) => {
