@@ -10,6 +10,7 @@ import { BusinessQuestionnaireComponent } from './components/business-questionna
 import { FarmerRegistrationComponent } from './components/farmer-registration/farmer-registration.component';
 import { BusinessRegistrationComponent } from './components/business-registration/business-registration.component';
 import { ChickenFarmingComponent } from './components/chicken-farming/chicken-farming.component';
+import { ChickenDetailComponent } from './chicken-detail/chicken-detail.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -23,4 +24,6 @@ export const routes: Routes = [
     { path: 'farmerregistration', component: FarmerRegistrationComponent },
     { path: 'businessregistration', component: BusinessRegistrationComponent },
     { path: 'chickenfarming', component: ChickenFarmingComponent },
+    { path: 'chicken/:id', component: ChickenDetailComponent },
+    { path: '', redirectTo: '/chicken/12345678-1234-1234-1234-123456789abc', pathMatch: 'full' } // default sample route
 ];
