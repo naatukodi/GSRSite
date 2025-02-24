@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
-import { ChickenService, Chicken, HealthRecord } from '../chicken.service';
+import { ChickenService, Chicken, HealthRecord } from '../services/chicken.service';
 
 // Optional interface to store grouped records
 interface GroupedRecords {
@@ -14,7 +14,7 @@ interface GroupedRecords {
 @Component({
   selector: 'app-chicken-detail',
   templateUrl: './chicken-detail.component.html',
-  styleUrls: ['./chicken-detail.component.css'],
+  styleUrls: ['./chicken-detail.component.scss'],
   imports: [CommonModule, RouterLink, RouterOutlet]
 })
 export class ChickenDetailComponent implements OnInit {

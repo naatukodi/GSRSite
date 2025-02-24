@@ -1,0 +1,69 @@
+<div class="container my-4" *ngIf="chicken; else loading" style="padding-bottom: 120px;">
+  <!-- Header / Overview Section -->
+  <div class="text-center mb-5">
+    <h1 class="mb-3">Chicken's Journey</h1>
+    <h2>{{ chicken.name }} ({{ chicken.breed }})</h2>
+    <p><strong>Weight:</strong> {{ chicken.weight }} kg</p>
+    <p><strong>Date of Birth:</strong> {{ chicken.dateOfBirth | date }}</p>
+    <p><strong>Status:</strong> {{ chicken.status }}</p>
+    <p><strong>Batch ID:</strong> {{ chicken.batchId }}</p>
+  </div>
+
+  <!-- Vertical Timeline -->
+  <div class="vertical-timeline">
+    <!-- Loop through each grouped record (by month, for instance) -->
+    <ng-container *ngFor="let group of groupedRecords; let i = index">
+      <!-- Then loop through each record in that group -->
+      <ng-container *ngFor="let record of group.records; let j = index">
+        <!-- We'll alternate left and right sides using even/odd checks -->
+        <div
+          class="timeline-item"
+          [ngClass]="{ left: (i + j) % 2 === 0, right: (i + j) % 2 !== 0 }"
+        >
+          <!-- Circle that holds the date or an icon -->
+          <div class="timeline-circle">
+            <!-- Example: Date in the circle. You could also use an icon/image. -->
+            <span class="circle-text">
+              {{ record.date | date:'MMM d, y' }}
+            </span>
+          </div>
+
+          <!-- The content box to the side of the circle -->
+          <div class="timeline-content">
+            <!-- Optional headings for special milestones -->
+            <!-- For example, label the first record as "Chirpy's Birth" -->
+            <h5 *ngIf="(i + j) === 0">Chirpy's Birth</h5>
+            <!-- Otherwise, use a generic heading or none at all -->
+            <h5 *ngIf="(i + j) !== 0">
+              <!-- Could show "Week X" or "Month: group.period" -->
+              Week {{ (i + j) }}
+            </h5>
+
+            <p class="mb-1">
+              <strong>Weight:</strong> {{ record.weight }} kg
+            </p>
+            <p class="mb-1">
+              <strong>Appetite:</strong> {{ record.appetite ? 'Good' : 'Poor' }}
+            </p>
+            <p class="mb-1">
+              <strong>Vaccinated:</strong> {{ record.vaccinated ? 'Yes' : 'No' }}
+            </p>
+            <p class="mb-0">
+              <em>{{ record.notes }}</em>
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Loading / Error States -->
+<ng-template #loading>
+  <p *ngIf="errorMessage; else spinner">{{ errorMessage }}</p>
+  <ng-template #spinner>
+    <p>Loading chicken details...</p>
+  </ng-template>
+</ng-template>
+
+<router-outlet></router-outlet>

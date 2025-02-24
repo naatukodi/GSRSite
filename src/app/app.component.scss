@@ -1,1 +1,11 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css');
+
+#footer {
+    bottom: 0;
+    color: #707070;
+    height: 2em;
+    left: 0;
+    position: relative; //changed to relative from fixed also works if position is not there
+    font-size: small;
+    width:100%;
+}

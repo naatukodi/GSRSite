@@ -10,7 +10,7 @@ import { BusinessQuestionnaireComponent } from './components/business-questionna
 import { FarmerRegistrationComponent } from './components/farmer-registration/farmer-registration.component';
 import { BusinessRegistrationComponent } from './components/business-registration/business-registration.component';
 import { ChickenFarmingComponent } from './components/chicken-farming/chicken-farming.component';
-import { ChickenDetailComponent } from './chicken-detail/chicken-detail.component';
+import { ChickenDetailComponent } from './components/chicken-detail/chicken-detail.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
