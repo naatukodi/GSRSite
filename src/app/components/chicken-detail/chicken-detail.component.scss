@@ -18,26 +18,28 @@
   z-index: 1;
 }
 
+/* Use grid layout for timeline items so they remain two columns */
+.timeline-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
 /* Timeline Item */
 .timeline-item {
   position: relative;
-  width: 50%;
   padding: 1.5rem 2rem;
   box-sizing: border-box;
 }
 
-/* Left side (dates, headings) */
+/* Left/right alignment for items */
 .timeline-item.left {
-  float: left;
+  justify-self: end;
   text-align: right;
-  clear: both;
 }
-
-/* Right side (dates, headings) */
 .timeline-item.right {
-  float: right;
+  justify-self: start;
   text-align: left;
-  clear: both;
 }
 
 /* The red circle that holds the date or icon */
@@ -45,23 +47,22 @@
   position: absolute;
   width: 60px;
   height: 60px;
-  background: #f44336; /* or your brand color */
+  background: #f44336; /* brand color */
   border-radius: 50%;
-  top: 1.2rem; /* aligns circle with the content box */
+  top: 1.2rem;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   font-weight: bold;
-  box-shadow: 0 0 0 4px #fff; /* white outline around the circle */
+  box-shadow: 0 0 0 4px #fff;
 }
 
 /* Position the circle on the correct side */
 .timeline-item.left .timeline-circle {
   right: -30px; /* half of circle width */
 }
-
 .timeline-item.right .timeline-circle {
   left: -30px; /* half of circle width */
 }
@@ -69,8 +70,9 @@
 /* The date or icon text inside the circle */
 .circle-text {
   text-align: center;
-  font-size: 0.75rem; /* smaller text size for date */
+  font-size: 0.75rem;
   line-height: 1.1;
+  white-space: nowrap; /* default: keep on one line */
 }
 
 /* Content box styling */
@@ -83,38 +85,46 @@
   z-index: 3;
 }
 
-/* Example heading style inside the content box */
+/* Heading style inside the content box */
 .timeline-content h5 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
-/* Responsive adjustments for smaller screens */
-@media screen and (max-width: 768px) {
-  .vertical-timeline::before {
-    left: 20px; /* shift the timeline line to the left */
-  }
+/* Ensure container leaves room for footer */
+.container {
+  margin-bottom: 80px;
+}
 
+/* Responsive adjustments for smaller screens below 576px */
+@media screen and (max-width: 576px) {
+  .vertical-timeline::before {
+    left: 20px; /* shift the vertical line to the left */
+  }
+  .timeline-items {
+    grid-template-columns: 1fr 1fr; /* keep two columns */
+  }
   .timeline-item {
     width: 100%;
-    padding-left: 3rem;
+    padding-left: 3.5rem; /* ensure enough left padding for timeline line and circle */
     padding-right: 1rem;
   }
-
   .timeline-item.left,
   .timeline-item.right {
-    float: none;
+    justify-self: stretch;
     text-align: left;
   }
-
   .timeline-item.left .timeline-circle,
   .timeline-item.right .timeline-circle {
+    /* Maintain the circle size, so the date isn't truncated */
+    width: 60px;
+    height: 60px;
     left: 0;
     right: auto;
   }
-}
-
-.container {
-  margin-bottom: 80px; /* Adjust the size based on your footer's height */
+  .circle-text {
+    font-size: 0.7rem; /* slightly larger than 0.65rem if needed */
+    white-space: normal; /* allow wrapping if necessary */
+  }
 }
