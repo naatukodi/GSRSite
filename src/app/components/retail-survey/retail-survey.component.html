@@ -1,0 +1,202 @@
+<section class="py-5 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title text-center mb-4">
+                Organic & Country Chicken Customer Survey
+              </h2>
+              <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+                <!-- Section 1: Demographic & Lifestyle Information -->
+                <div class="mb-4">
+                  <h3 class="card-title">Section 1: Demographic & Lifestyle Information</h3>
+                  <div class="form-group">
+                    <label>Age Group:</label>
+                    <select formControlName="ageGroup" class="form-control">
+                      <option value="">Select Age Group</option>
+                      <option value="18-24">18–24</option>
+                      <option value="25-34">25–34</option>
+                      <option value="35-44">35–44</option>
+                      <option value="45-54">45–54</option>
+                      <option value="55+">55+</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Monthly Household Income (in INR):</label>
+                    <select formControlName="monthlyIncome" class="form-control">
+                      <option value="">Select Income Range</option>
+                      <option value="less_than_20000">Less than ₹20,000</option>
+                      <option value="20000_40000">₹20,000 – ₹40,000</option>
+                      <option value="40000_60000">₹40,000 – ₹60,000</option>
+                      <option value="60000_80000">₹60,000 – ₹80,000</option>
+                      <option value="more_than_80000">More than ₹80,000</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Lifestyle & Buying Habits:</label>
+                    <input type="text" formControlName="lifestyle" class="form-control" placeholder="Describe your lifestyle">
+                  </div>
+                  <div class="form-group">
+                    <label>How often do you purchase organic or premium food products?</label>
+                    <select formControlName="purchaseFrequency" class="form-control">
+                      <option value="">Select Frequency</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="biweekly">Bi-weekly</option>
+                      <option value="monthly">Monthly</option>
+                      <option value="occasionally">Occasionally</option>
+                    </select>
+                  </div>
+                </div>
+  
+                <!-- Section 2: Product Awareness & Purchasing Behavior -->
+                <div class="mb-4">
+                  <h3 class="card-title">Section 2: Product Awareness & Purchasing Behavior</h3>
+                  <div class="form-group">
+                    <label>How familiar are you with organic and/or country chicken products?</label>
+                    <select formControlName="organicAwareness" class="form-control">
+                      <option value="">Select</option>
+                      <option value="not_familiar">Not familiar</option>
+                      <option value="somewhat_familiar">Somewhat familiar</option>
+                      <option value="very_familiar">Very familiar</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>How often do you purchase organic/country chicken?</label>
+                    <select formControlName="chickenPurchaseFrequency" class="form-control">
+                      <option value="">Select Frequency</option>
+                      <option value="weekly">Every week</option>
+                      <option value="monthly">Every month</option>
+                      <option value="occasionally">Occasionally</option>
+                      <option value="rarely_never">Rarely/Never</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Which factors most influence your decision when choosing a chicken product? (Select up to 3)</label>
+                    <div formGroupName="purchaseDrivers">
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="price" class="form-check-input">
+                        <label class="form-check-label">Price</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="organicCertification" class="form-check-input">
+                        <label class="form-check-label">Organic certification</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="animalWelfare" class="form-check-input">
+                        <label class="form-check-label">Animal welfare standards</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="traceability" class="form-check-input">
+                        <label class="form-check-label">Traceability</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="tasteQuality" class="form-check-input">
+                        <label class="form-check-label">Taste and quality</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="variety" class="form-check-input">
+                        <label class="form-check-label">Variety/Type of chicken</label>
+                      </div>
+                      <div class="form-group mt-2">
+                        <label>Other:</label>
+                        <input type="text" formControlName="other" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <!-- Section 3: Product Features & Value Perception -->
+                <div class="mb-4">
+                  <h3 class="card-title">Section 3: Product Features & Value Perception</h3>
+                  <div class="form-group">
+                    <label>How important is it for you to know the complete history of your chicken?</label>
+                    <select formControlName="transparency" class="form-control">
+                      <option value="">Select</option>
+                      <option value="not_important">Not important</option>
+                      <option value="somewhat_important">Somewhat important</option>
+                      <option value="very_important">Very important</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Would the ability to scan a QR code on the pack increase your confidence in the product?</label>
+                    <select formControlName="qrIntegration" class="form-control">
+                      <option value="">Select</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                      <option value="maybe">Maybe</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Which variety are you most interested in trying? (Select one or more)</label>
+                    <div formGroupName="productVarieties">
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="authentic" class="form-check-input">
+                        <label class="form-check-label">Authentic Country Chicken – ₹700 per kg</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="giriraj" class="form-check-input">
+                        <label class="form-check-label">Giriraj (Imitation) – ₹500 per kg</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="sonali" class="form-check-input">
+                        <label class="form-check-label">Sonali – ₹400 per kg</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="notSure" class="form-check-input">
+                        <label class="form-check-label">Not sure</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <!-- Section 4: Price Sensitivity & Purchase Intent -->
+                <div class="mb-4">
+                  <h3 class="card-title">Section 4: Price Sensitivity & Purchase Intent</h3>
+                  <div class="form-group">
+                    <label>Price Point Acceptance:</label>
+                    <input type="text" formControlName="pricePointAcceptance" class="form-control" placeholder="Enter maximum price for 1kg">
+                  </div>
+                  <div class="form-group">
+                    <label>If the product is priced at the higher end of your range, would you:</label>
+                    <input type="text" formControlName="qualityResponse" class="form-control" placeholder="e.g., Still purchase it due to quality, Consider alternatives, etc.">
+                  </div>
+                  <div class="form-group">
+                    <label>How does full traceability affect your perception of the product’s value?</label>
+                    <select formControlName="perceivedValue" class="form-control">
+                      <option value="">Select</option>
+                      <option value="significantly_increases">Significantly increases value</option>
+                      <option value="moderately_increases">Moderately increases value</option>
+                      <option value="no_impact">No impact</option>
+                      <option value="unsure">Unsure</option>
+                    </select>
+                  </div>
+                </div>
+  
+                <!-- Section 5: Open-Ended Feedback -->
+                <div class="mb-4">
+                  <h3 class="card-title">Section 5: Open-Ended Feedback</h3>
+                  <div class="form-group">
+                    <label>Suggestions & Improvements:</label>
+                    <textarea formControlName="suggestions" class="form-control" rows="3"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>Final Comments:</label>
+                    <textarea formControlName="finalComments" class="form-control" rows="3"></textarea>
+                  </div>
+                </div>
+  
+                <!-- Submit Button -->
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="custom-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Survey
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
