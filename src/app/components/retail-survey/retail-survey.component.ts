@@ -1,22 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { FormGroup, FormBuilder, Validators,ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-retail-survey',
-  imports: [CommonModule, RouterLink, RouterOutlet, ReactiveFormsModule],
+  imports: [CommonModule, RouterLink, RouterOutlet,ReactiveFormsModule],
   templateUrl: './retail-survey.component.html',
   styleUrl: './retail-survey.component.scss'
 })
 export class RetailSurveyComponent implements OnInit {
   surveyForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.surveyForm = this.fb.group({
+      // New field for Customer Phone Number
+      customerId: ['', [Validators.required, Validators.pattern('^[0-9]{10,15}$')]],
+
       // Section 1: Demographic & Lifestyle Information
       ageGroup: ['', Validators.required],
       monthlyIncome: ['', Validators.required],
@@ -57,16 +60,27 @@ export class RetailSurveyComponent implements OnInit {
     });
   }
 
+  // Simple GUID generator
+  generateGuid(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
   onSubmit(): void {
     if (this.surveyForm.valid) {
       const formData = {
-        recordType: 'retailsurvey',  // updated record type
+        id: this.generateGuid(),
+        Type: 'retailsurvey',  // updated property name for record type
         ...this.surveyForm.value
       };
 
-      this.http.post('/api/retailsurvey', formData)
+      this.http.post('https://naatukodiappservice.azurewebsites.net/api/retailsurvey', formData)
         .subscribe(response => {
           console.log('Survey submitted successfully', response);
+          this.router.navigate(['/']);
         }, error => {
           console.error('Error submitting survey', error);
         });
