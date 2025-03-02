@@ -17,14 +17,13 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './farmersurvey.component.html',
   styleUrl: './farmersurvey.component.scss'
 })
-
 export class FarmersurveyComponent {
   // Dropdown options
   rearingMethodOptions = ['Free-range', 'Farm-based', 'Others'];
   chickenCountOptions = ['0-50', '50-100', '100-500', 'More than 500'];
   monthlySalesOptions = ['0-50', '50-100', '100-500', 'More than 500'];
 
-  // Multiple checkboxes
+  // Multiple checkboxes options
   feedMaterialOptions = ['Commercial feed', 'Wheat', 'Pulses', 'Others'];
   healthPracticesOptions = [
     'Disease prevention',
@@ -49,14 +48,14 @@ export class FarmersurveyComponent {
     'Marketing',
   ];
 
-  // Initialize all fields from your JSON object.
+  // Initialize form data
   formData: {
-    id: string;
+    // Removed id and CustomerId fields
     Type: string;
-    CustomerId: string;
     Name: string;
     Location: string;
-    ContactInfo: string;
+    phonenumber: string; // renamed from ContactInfo
+    CustomerId?: string; // optional field for CustomerId
     ChickenBreeds: string;
     RearingMethod: string;
     ChickenCount: string;
@@ -79,23 +78,17 @@ export class FarmersurveyComponent {
     PriceIssues: string;
     Suggestions: string;
   } = {
-      id: '',
       Type: 'FarmerQuestionnaire',
-      CustomerId: '',
       Name: '',
       Location: '',
-      ContactInfo: '',
+      phonenumber: '',
       ChickenBreeds: '',
       RearingMethod: '',             // dropdown
       ChickenCount: '',              // dropdown
       MonthlySales: '',              // dropdown
-
-      // Multi-selects stored as comma-separated (internally),
-      // but the server expects arrays, so we'll convert them in onSubmit().
       FeedMaterials: '',
       HealthPractices: '',
       HasVetAccess: false,
-
       SellingMethods: '',
       SupplyDirectlyToMarket: false,
       MarketRequirements: '',
@@ -154,13 +147,10 @@ export class FarmersurveyComponent {
   }
 
   onSubmit() {
-    // 1. Make a copy of formData so we can transform as needed
+    // Create a copy of formData to transform as needed
     const payload = { ...this.formData };
 
-    // 2. Convert all comma-separated fields into arrays
-    //    for the properties your backend expects as arrays.
-    //    If the field is empty string or undefined, default to an empty array.
-
+    // Convert comma-separated fields to arrays for the backend
     payload.FeedMaterials = typeof payload.FeedMaterials === 'string'
       ? payload.FeedMaterials.split(',')
       : [];
@@ -177,14 +167,15 @@ export class FarmersurveyComponent {
       ? payload.AssistanceRequired.split(',')
       : [];
 
-    // 3. Wrap everything in a "questionnaire" property
-    const requestBody = payload;
+    // Map the provided phonenumber to the expected CustomerId field
+    // (Even though the form no longer has a CustomerId field, we set it here for the POST request.)
+    payload['CustomerId'] = payload.phonenumber;
 
-    console.log('Submitting form data:', requestBody);
+    console.log('Submitting form data:', payload);
 
-    // 4. POST the wrapped payload to the server
+    // Post the payload to the server
     this.http
-      .post('https://naatukodiappservice.azurewebsites.net/api/farmer/submit', requestBody)
+      .post('https://naatukodiappservice.azurewebsites.net/api/farmer/submit', payload)
       .subscribe({
         next: (response) => {
           alert('Questionnaire submitted successfully!');

@@ -2,21 +2,19 @@
 <form class="questionnaire-form" (ngSubmit)="onSubmit()" #registrationForm="ngForm">
     <!-- Personal Details -->
     <h3>Personal Details</h3>
+    <!-- Removed Customer ID input -->
+
     <div class="form-group">
-        <label for="customerId">Customer ID:</label>
-        <input type="text" id="customerId" name="customerId" [(ngModel)]="formData.customerId" required />
-    </div>
-    <div class="form-group">
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" name="fullName" [(ngModel)]="formData.fullName" required />
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="formData.name" required />
     </div>
     <div class="form-group">
         <label for="aadharNumber">Aadhar Number:</label>
         <input type="text" id="aadharNumber" name="aadharNumber" [(ngModel)]="formData.aadharNumber" required />
     </div>
     <div class="form-group">
-        <label for="phoneOrEmail">Phone Number/Email:</label>
-        <input type="text" id="phoneOrEmail" name="phoneOrEmail" [(ngModel)]="formData.phoneOrEmail" required />
+        <label for="phonenumber">Phone Number:</label>
+        <input type="text" id="phonenumber" name="phonenumber" [(ngModel)]="formData.phonenumber" required />
     </div>
 
     <!-- Farmer Type & Subtype -->

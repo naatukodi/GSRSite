@@ -1,11 +1,8 @@
-<h1>Business Questionnaire</h1>
+<h1>Business Survey</h1>
 <form class="questionnaire-form" (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
     <!-- Business Information -->
     <h3>Business Information</h3>
-    <div class="form-group">
-        <label for="customerId">Customer ID:</label>
-        <input type="text" id="customerId" name="customerId" [(ngModel)]="formData.CustomerId" required />
-    </div>
+    <!-- Removed Customer ID field -->
     <div class="form-group">
         <label for="businessName">Business Name:</label>
         <input type="text" id="businessName" name="businessName" [(ngModel)]="formData.businessName" required />
@@ -15,8 +12,8 @@
         <input type="text" id="contactPerson" name="contactPerson" [(ngModel)]="formData.contactPerson" required />
     </div>
     <div class="form-group">
-        <label for="phoneOrEmail">Phone Number/Email:</label>
-        <input type="text" id="phoneOrEmail" name="phoneOrEmail" [(ngModel)]="formData.phoneOrEmail" required />
+        <label for="phonenumber">Phone Number:</label>
+        <input type="text" id="phonenumber" name="phonenumber" [(ngModel)]="formData.phonenumber" required />
     </div>
     <div class="form-group">
         <label for="location">Location:</label>

@@ -24,6 +24,9 @@ export class FarmerRegistrationComponent {
   constructor(private http: HttpClient, private router: Router) { }
 
   onSubmit() {
+    // Assign phone number as customerId
+    this.formData.customerId = this.formData.phonenumber;
+
     console.log('Form Data:', this.formData);
     this.http.post('https://naatukodiappservice.azurewebsites.net/api/FarmerRegistration', this.formData).subscribe({
       next: (response) => {

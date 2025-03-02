@@ -1,24 +1,10 @@
-<h1>Farmer Questionnaire</h1>
+<h1>Farmer Survey</h1>
 
 <form (ngSubmit)="onSubmit()" #questionnaireForm="ngForm" class="questionnaire-form">
-    <!-- ID (often read-only or hidden) -->
-    <div class="form-group">
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" [(ngModel)]="formData.id" />
-    </div>
-
-    <!-- Type (usually read-only) -->
-    <div class="form-group">
-        <label for="type">Type:</label>
-        <input type="text" id="type" name="type" [(ngModel)]="formData.Type" readonly />
-    </div>
+    <!-- Removed ID and Customer ID fields -->
 
     <!-- Customer Information -->
     <h3>Customer Information</h3>
-    <div class="form-group">
-        <label for="customerId">Customer ID:</label>
-        <input type="text" id="customerId" name="customerId" [(ngModel)]="formData.CustomerId" required />
-    </div>
     <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" [(ngModel)]="formData.Name" required />
@@ -28,8 +14,8 @@
         <input type="text" id="location" name="location" [(ngModel)]="formData.Location" required />
     </div>
     <div class="form-group">
-        <label for="contactInfo">Contact Info:</label>
-        <input type="text" id="contactInfo" name="contactInfo" [(ngModel)]="formData.ContactInfo" required />
+        <label for="phonenumber">Phone Number:</label>
+        <input type="text" id="phonenumber" name="phonenumber" [(ngModel)]="formData.phonenumber" required />
     </div>
 
     <!-- Chicken/Farming Details -->
@@ -211,15 +197,12 @@
         border-radius: 10px;
         background-color: #f9f9f9;
     }
-
     .form-group {
         margin-bottom: 15px;
     }
-
     .form-group label {
         font-weight: bold;
     }
-
     .form-group label,
     .form-group input,
     .form-group select,
@@ -227,7 +210,6 @@
         display: block;
         margin-top: 6px;
     }
-
     .form-group input[type='text'],
     .form-group select,
     .form-group textarea {
@@ -235,13 +217,11 @@
         padding: 8px;
         box-sizing: border-box;
     }
-
     .form-group input[type='checkbox'] {
         width: auto;
         display: inline-block;
         margin-right: 5px;
     }
-
     .submit-button {
         width: 100%;
         padding: 10px;
@@ -252,7 +232,6 @@
         border-radius: 5px;
         cursor: pointer;
     }
-
     .submit-button:hover {
         background-color: #45a049;
     }
